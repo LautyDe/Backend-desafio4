@@ -1,7 +1,11 @@
 const express = require("express");
+const bp = require("body-parser");
 const routers = require("./routers");
 const handlebars = require("express-handlebars");
 const app = express();
+
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 app.use("/api", routers);
 
@@ -9,8 +13,7 @@ const PORT = process.env.NODE_PORT;
 const ENV = process.env.NODE_ENV;
 
 /* Middleware incorporado */
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 app.engine("handlebars", handlebars.engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");

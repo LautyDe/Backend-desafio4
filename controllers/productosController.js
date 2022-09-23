@@ -65,8 +65,8 @@ class Contenedor {
           } else {
             console.log("Archivo con contenido");
             /*Si tiene producto se le asigna la id siguente */
-            let ultimoId = data[data.length + 1].id;
-            producto["id"] = ultimoId + 1;
+            let ultimoId = data[data.length - 1].id;
+            producto = { id: ultimoId + 1, ...producto };
           }
           data.push(producto);
           console.log("se esta agregando el producto");
@@ -171,13 +171,9 @@ class Contenedor {
         if (dataId.length === 0) {
           throw new Error("No se encontro producto con ese id");
         } else {
-          /* si existe se elimina ese producto */
-          data = data.filter((item) => item.id !== id);
-          /* se agrega producto con mismo id pero con la info nueva */
-          dataId = { id: id, ...info };
-          data.push(dataId);
-          this.readFile(this.archivo, data);
-          console.log(`Se modifico el producto con id: ${id}`);
+          const indexId = data.findIndex((el) => id === el.id);
+          console.log(indexId);
+          /* data[indexId]  */
         }
       }
     } catch (error) {

@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log(`Post req recibida`);
   const data = req.body;
-  console.log(`nuevo producto: ${data}`);
+  console.log(data);
   const nuevoProducto = await productos.save(data);
 
   res.status(201).end();
