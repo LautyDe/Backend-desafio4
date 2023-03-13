@@ -181,7 +181,9 @@ export default class ProductManager {
       product.description &&
       product.price &&
       product.thumbnail &&
-      product.stock
+      product.stock &&
+      product.status &&
+      product.category
     ) {
       return true;
     } else {
@@ -194,6 +196,8 @@ export default class ProductManager {
       } else if (!product.thumbnail) {
         throw new Error(`Falta la imagen del producto.`);
       } else if (!product.stock) {
+        throw new Error(`Falta el stock del producto.`);
+      } else if (!product.category) {
         throw new Error(`Falta el stock del producto.`);
       }
     }

@@ -1,5 +1,6 @@
 import express from "express";
 import routers from "./src/routers/index.routers.js";
+import bp from "body-parser";
 //import { dirname } from "path";
 //import { fileURLToPath } from "url";
 
@@ -7,8 +8,8 @@ const app = express();
 const PORT = 8080;
 //const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   try {
