@@ -16,8 +16,12 @@ export default class ProductManager {
           product = {
             id: this.#idGenerator(productsArray),
             code: this.#codeGenerator(),
+            status: true,
             ...product,
           };
+          if (!product.thumbnail) {
+            product.thumbnail = "";
+          }
           productsArray.push(product);
           console.log("Agregando producto...");
           await this.#writeFile(this.archivo, productsArray);
@@ -33,6 +37,7 @@ export default class ProductManager {
               product = {
                 id: this.#idGenerator(),
                 code: this.#codeGenerator(),
+                status: true,
                 ...product,
               };
             } else {
@@ -40,10 +45,14 @@ export default class ProductManager {
               product = {
                 id: this.#idGenerator(productsArray),
                 code: this.#codeGenerator(),
+                status: true,
                 ...product,
               };
             }
             console.log("Agregando producto...");
+            if (!product.thumbnail) {
+              product.thumbnail = "";
+            }
             productsArray.push(product);
             /* escribo el producto */
             this.#writeFile(this.archivo, productsArray);
@@ -103,6 +112,7 @@ export default class ProductManager {
           const updateProduct = { ...productsArray[productsIndex], ...product };
           productsArray.splice(productsIndex, 1, updateProduct);
           await this.#writeFile(this.archivo, productsArray);
+          return updateProduct;
         } else {
           throw new Error(`No se encontro un producto con el id solicitado`);
         }
@@ -123,11 +133,13 @@ export default class ProductManager {
         console.log(`Buscando producto con id: ${id}`);
         if (productsArray.some(item => item.id === id)) {
           const productsArray = await this.#readFile(this.archivo);
+          const removedProduct = await this.getById(id);
           /* elimino el producto */
           console.log(`Eliminando producto con id solicitado...`);
           const newProductsArray = productsArray.filter(item => item.id !== id);
           this.#writeFile(this.archivo, newProductsArray);
           console.log(`Producto con el id ${id} eliminado`);
+          return removedProduct;
         } else {
           throw new Error(`No se encontro el producto con el id ${id}`);
         }
@@ -180,9 +192,7 @@ export default class ProductManager {
       product.title &&
       product.description &&
       product.price &&
-      product.thumbnail &&
       product.stock &&
-      product.status &&
       product.category
     ) {
       return true;
@@ -193,8 +203,6 @@ export default class ProductManager {
         throw new Error(`Falta la descripcion del producto.`);
       } else if (!product.price) {
         throw new Error(`Falta el precio del producto.`);
-      } else if (!product.thumbnail) {
-        throw new Error(`Falta la imagen del producto.`);
       } else if (!product.stock) {
         throw new Error(`Falta el stock del producto.`);
       } else if (!product.category) {

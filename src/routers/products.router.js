@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { request, Router } from "express";
 import ProductManager from "../controllers/productManager.js";
 
 const router = Router();
@@ -15,42 +15,55 @@ const notFound = { error: "Product not found" };
     */
 
 router.get("/", async (req, res) => {
-  try {
-    const limit = req.query.limit;
-    const products = await productManager.getAll();
-    if (!products) {
-      throw new Error("No se consiguio info de la database");
-    } else {
-      if (limit) {
-        const limitedProducts = products.slice(0, limit);
-        res.status(200).json(limitedProducts);
-      } else {
-        res.status(200).json(products);
-      }
-    }
-  } catch (error) {
-    console.log(`Error obteniendo los productos: ${error.message}`);
-    res.status(500).json(notFound);
+  const limit = req.query.limit;
+  const products = await productManager.getAll();
+
+  if (limit) {
+    const limitedProducts = products.slice(0, limit);
+    res.status(200).json(limitedProducts);
+  } else {
+    res.status(200).json(products);
   }
 });
 
 router.get("/:pid", async (req, res) => {
-  try {
-    const { pid } = req.params;
-    const product = await productManager.getById(parseInt(pid));
-    if (product) {
-      res.status(200).json(product);
-    } else {
-      res.status(404).json(notFound);
-      throw new Error(`Producto con id ${pid} no encontrado`);
-    }
-  } catch (error) {
-    console.log(`Error obteniendo producto por su id: ${error.message}`);
+  const { pid } = req.params;
+  const product = await productManager.getById(parseInt(pid));
+  product ? res.status(200).json(product) : res.status(404).json(notFound);
+});
+
+router.post("/", async (req, res) => {
+  const product = req.body;
+  const addedProduct = await productManager.addProduct(product);
+  if (!addedProduct) {
+    res.status(400).json({ error: "No se pudo agregar el producto" });
+  } else {
+    res.status(201).json(product);
   }
 });
 
-router.post("/", async (req, res) => {});
+router.put("/:pid", async (req, res) => {
+  const { pid } = req.params;
+  const modification = req.body;
+  const modifiedProduct = await productManager.updateProduct(
+    parseInt(pid),
+    modification
+  );
+  if (!modifiedProduct) {
+    res.status(400).json({ error: `No se pudo modificar el producto` });
+  } else {
+    res.status(200).json(modifiedProduct);
+  }
+});
 
-router.get("/", async (req, res) => {});
+router.delete("/:pid", async (req, res) => {
+  const { pid } = req.params;
+  const removedProduct = await productManager.deleteById(parseInt(pid));
+  if (!removedProduct) {
+    res.status(404).json(notFound);
+  } else {
+    res.status(200).json(removedProduct);
+  }
+});
 
 export default router;
