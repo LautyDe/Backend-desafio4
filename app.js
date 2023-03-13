@@ -1,9 +1,12 @@
 import express from "express";
-import ProductManager from "./productManager.js";
+import ProductManager from "./src/controllers/productManager.js";
+//import { dirname } from "path";
+//import { fileURLToPath } from "url";
 
 const productManager = new ProductManager("./productos.json");
 const app = express();
 const PORT = 8080;
+//const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +29,8 @@ app.get("/", (req, res) => {
     console.log(`Error cargando el proyecto: ${error.message}`);
   }
 });
+
+app.use("/api", routers);
 
 app.get("/products", async (req, res) => {
   try {
