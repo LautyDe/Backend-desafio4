@@ -1,5 +1,6 @@
 import express from "express";
 import ProductManager from "./src/controllers/productManager.js";
+import routers from "./src/routers";
 //import { dirname } from "path";
 //import { fileURLToPath } from "url";
 
