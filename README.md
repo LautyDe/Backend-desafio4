@@ -1,8 +1,8 @@
-# Entrega 3 Lautaro Demonte
+# Entrega 4 Lautaro Demonte
 
 ## Configuracion
 
-Hacer npm install para instalar las dependencias
+Hacer npm i para instalar las dependencias
 
 ### Ejecutar programa
 
