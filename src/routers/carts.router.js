@@ -5,7 +5,7 @@ import ProductManager from "../controllers/productManager.js";
 const router = Router();
 const productManager = new ProductManager("src/db/products.json");
 const cartManager = new CartManager("src/db/carts.json");
-const notFound = { error: "Product not found" };
+const notFound = { error: "Cart not found" };
 
 /* ok: 200
    created: 201
@@ -28,27 +28,13 @@ router.get("/:cid", async (req, res) => {
 });
 
 router.post("/:cid/product/:pid", async (req, res) => {
-  try {
-    const { cid, pid } = req.params;
-
-    const cart = await cartManager.getById(parseInt(cid));
-    if (!cart) {
-      throw new Error(`No se encontro el carrito de id ${cid}`);
-    }
-
-    const product = await productManager.getById(parseInt(pid));
-    if (!product) {
-      throw new Error(`No se encontro el producto de id ${pid}`);
-    }
-
-    const productToAdd = {
-      product: product.id,
-      quantity: 1,
-    };
-    console.log(productToAdd);
-  } catch (error) {
-    console.log(`Error agregando producto al carrito: ${error.message}`);
-    res.status(404).json(notFound);
+  const { cid, pid } = req.params;
+  const product = await productManager.getById(parseInt(pid));
+  if (product) {
+    const cart = await cartManager.addToCart(parseInt(cid), parseInt(pid));
+    !cart ? res.status(404).json(notFound) : res.status(200).json(cart);
+  } else {
+    res.status(404).json({ error: "Product not found" });
   }
 });
 

@@ -72,6 +72,30 @@ export default class CartManager {
     }
   }
 
+  async addToCart(cid, pid) {
+    try {
+      /* chequeo si existe el documento */
+      if (this.#exists(this.archivo)) {
+        const cartsArray = await this.#readFile(this.archivo);
+        const cart = cartsArray.find(item => item.id === cid);
+        if (cart) {
+          const addProduct = cart.products.find(item => item.product === pid);
+          if (addProduct) {
+            addProduct.quantity++;
+          } else {
+            cart.products.push({ product: pid, quantity: 1 });
+          }
+          await this.#writeFile(this.archivo, cartsArray);
+          return cart;
+        } else {
+          throw new Error(`No se encontro el carrito con el id: ${cid}`);
+        }
+      }
+    } catch (error) {
+      console.log(`Error agregando producto al carrito: ${error.message}`);
+    }
+  }
+
   #idGenerator(cartsArray = []) {
     const id =
       cartsArray.length === 0 ? 1 : cartsArray[cartsArray.length - 1].id + 1;
