@@ -18,18 +18,18 @@ router.get("/", async (req, res) => {
   const limit = req.query.limit;
   const products = await productManager.getAll();
 
-  if (limit) {
+  if (!limit) {
+    res.status(200).json(products);
+  } else {
     const limitedProducts = products.slice(0, limit);
     res.status(200).json(limitedProducts);
-  } else {
-    res.status(200).json(products);
   }
 });
 
 router.get("/:pid", async (req, res) => {
   const { pid } = req.params;
   const product = await productManager.getById(parseInt(pid));
-  product ? res.status(200).json(product) : res.status(404).json(notFound);
+  !product ? res.status(404).json(notFound) : res.status(200).json(product);
 });
 
 router.post("/", async (req, res) => {

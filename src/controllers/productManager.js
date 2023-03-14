@@ -11,8 +11,9 @@ export default class ProductManager {
       if (this.#paramsValidator(product)) {
         /* busco si el archivo no existe o si existe, si tiene datos*/
         if (!this.#exists(this.archivo)) {
+          /* Si el archivo no existe, lo creo con el primer carrito agregado */
           console.log("Se crea archivo");
-          let productsArray = [];
+          const productsArray = [];
           product = {
             id: this.#idGenerator(productsArray),
             code: this.#codeGenerator(),
@@ -206,7 +207,7 @@ export default class ProductManager {
       } else if (!product.stock) {
         throw new Error(`Falta el stock del producto.`);
       } else if (!product.category) {
-        throw new Error(`Falta el stock del producto.`);
+        throw new Error(`Falta la categoria del producto.`);
       }
     }
   }
