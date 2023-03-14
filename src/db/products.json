@@ -1,78 +1,6 @@
 [
   {
     "id": 1,
-    "title": "Silla Gamer",
-    "price": 60000,
-    "thumbnail": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/720/526/products/diseno-sin-titulo-5121-bd311cff4d158548d516372654110148-1024-1024.jpg",
-    "category": "Gaming"
-  },
-  {
-    "id": 2,
-    "title": "Joystick PS5",
-    "price": 25000,
-    "thumbnail": "https://images.fravega.com/f1000/a23c2e9cbe114eca833fc5f7288457fc.jpg",
-    "category": "Gaming"
-  },
-  {
-    "id": 3,
-    "title": "Auriculares",
-    "price": 42000,
-    "thumbnail": "https://arsonyb2c.vtexassets.com/arquivos/ids/348062/PS5_WHS_Pshot_A.jpg?v=637363806123470000",
-    "category": "Gaming"
-  },
-  {
-    "id": 4,
-    "title": "Parlantes",
-    "price": 4800,
-    "thumbnail": "https://tiendatecnet.com/wp-content/uploads/2022/05/parlantes-logitech-s150.jpg",
-    "category": "Gaming"
-  },
-  {
-    "id": 5,
-    "title": "Macbook Air 13",
-    "price": 600000,
-    "thumbnail": "https://www.notebookcheck.info/uploads/tx_nbc2/air13teaser.jpg",
-    "category": "Electronic"
-  },
-  {
-    "id": 6,
-    "title": "Teclado",
-    "price": 20000,
-    "thumbnail": "https://app.contabilium.com/files/explorer/16277/Productos-Servicios/concepto-5848394.jpg",
-    "category": "Gaming"
-  },
-  {
-    "id": 7,
-    "title": "Mouse",
-    "price": 6000,
-    "thumbnail": "https://s3-sa-east-1.amazonaws.com/saasargentina/js5YAR90pHrt0Vvo5kCB/imagen",
-    "category": "Gaming"
-  },
-  {
-    "id": 8,
-    "title": "PS5",
-    "price": 300000,
-    "thumbnail": "https://arsonyb2c.vtexassets.com/arquivos/ps5.png",
-    "category": "Gaming"
-  },
-  {
-    "id": 9,
-    "title": "Motorola Edge 30 Pro",
-    "price": 250000,
-    "thumbnail": "https://aloisevirtual.com.ar/wp-content/uploads/2022/06/782813-3.jpg",
-    "category": "Electronic"
-  },
-  {
-    "id": 10,
-    "title": "Iphone 14 Pro Max",
-    "description": "Iphone mas nuevo del mercado",
-    "price": 980000,
-    "thumbnail": "https://bittstores.com/wp-content/uploads/2022/09/Apple-iPhone-14-Pro-deep-purple-.jpeg",
-    "category": "Electronic",
-    "stock": 13
-  },
-  {
-    "id": 1,
     "code": "FWOipAcVTCPTsfc",
     "status": true,
     "title": "Silla Gamer",
@@ -81,5 +9,104 @@
     "thumbnail": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/720/526/products/diseno-sin-titulo-5121-bd311cff4d158548d516372654110148-1024-1024.jpg",
     "category": "Gaming",
     "stock": 8
+  },
+  {
+    "id": 2,
+    "code": "4VWG4kdjLnU2dIF",
+    "status": true,
+    "title": "Joystick PS5",
+    "description": "Joystick para PS5",
+    "price": 25000,
+    "thumbnail": "https://images.fravega.com/f1000/a23c2e9cbe114eca833fc5f7288457fc.jpg",
+    "category": "Gaming",
+    "stock": 13
+  },
+  {
+    "id": 3,
+    "code": "D421zJZ8DMaPVii",
+    "status": true,
+    "title": "Auriculares",
+    "description": "Auriculares para gaming",
+    "price": 42000,
+    "thumbnail": "https://arsonyb2c.vtexassets.com/arquivos/ids/348062/PS5_WHS_Pshot_A.jpg?v=637363806123470000",
+    "category": "Gaming",
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "code": "dT4U8mr9yrX3vp8",
+    "status": true,
+    "title": "Parlantes",
+    "description": "Parlantes para gaming",
+    "price": 4800,
+    "thumbnail": "https://tiendatecnet.com/wp-content/uploads/2022/05/parlantes-logitech-s150.jpg",
+    "category": "Gaming",
+    "stock": 30
+  },
+  {
+    "id": 5,
+    "code": "xV9xw8Dz2TNpLCW",
+    "status": true,
+    "title": "Macbook Air 13",
+    "description": "Ipad Apple",
+    "price": 600000,
+    "thumbnail": "https://www.notebookcheck.info/uploads/tx_nbc2/air13teaser.jpg",
+    "category": "Electronic",
+    "stock": 4
+  },
+  {
+    "id": 6,
+    "code": "sZIBDn0ZHa8VoRp",
+    "status": true,
+    "title": "Teclado",
+    "description": "Teclado para gaming",
+    "price": 20000,
+    "thumbnail": "https://app.contabilium.com/files/explorer/16277/Productos-Servicios/concepto-5848394.jpg",
+    "category": "Gaming",
+    "stock": 14
+  },
+  {
+    "id": 7,
+    "code": "fZd8kAqaU9HtB5w",
+    "status": true,
+    "title": "Mouse",
+    "description": "Mouse para gaming",
+    "price": 6000,
+    "thumbnail": "https://s3-sa-east-1.amazonaws.com/saasargentina/js5YAR90pHrt0Vvo5kCB/imagen",
+    "category": "Gaming",
+    "stock": 9
+  },
+  {
+    "id": 8,
+    "code": "Awd4N4JTKIEPj2V",
+    "status": true,
+    "title": "PS5",
+    "description": "Sony Play Station 5",
+    "price": 300000,
+    "thumbnail": "https://arsonyb2c.vtexassets.com/arquivos/ps5.png",
+    "category": "Gaming",
+    "stock": 4
+  },
+  {
+    "id": 9,
+    "code": "hpTrvsKClIRbmPq",
+    "status": true,
+    "title": "Motorola Edge 30 Pro",
+    "description": "Celular Motorola",
+    "price": 250000,
+    "thumbnail": "https://aloisevirtual.com.ar/wp-content/uploads/2022/06/782813-3.jpg",
+    "category": "Electronic",
+    "stock": 18
+  },
+  {
+    "id": 10,
+    "code": "BuOZXQRY7XNCe99",
+    "status": true,
+    "title": "Iphone 14 Pro Max",
+    "description": "Celular Apple",
+    "price": 980000,
+    "thumbnail": "https://bittstores.com/wp-content/uploads/2022/09/Apple-iPhone-14-Pro-deep-purple-.jpeg",
+    "category": "Electronic",
+    "stock": 2
   }
 ]
