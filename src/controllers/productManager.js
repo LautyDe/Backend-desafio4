@@ -194,7 +194,9 @@ export default class ProductManager {
       product.description &&
       product.price &&
       product.stock &&
-      product.category
+      product.category &&
+      !product.id &&
+      !product.code
     ) {
       return true;
     } else {
@@ -208,6 +210,10 @@ export default class ProductManager {
         throw new Error(`Falta el stock del producto.`);
       } else if (!product.category) {
         throw new Error(`Falta la categoria del producto.`);
+      } else if (product.id) {
+        throw new Error(`El producto no se debe cargar con el id`);
+      } else if (product.code) {
+        throw new Error(`El producto no se debe cargar con el code`);
       }
     }
   }

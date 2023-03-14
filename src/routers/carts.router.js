@@ -28,7 +28,28 @@ router.get("/:cid", async (req, res) => {
 });
 
 router.post("/:cid/product/:pid", async (req, res) => {
-  const { cid, pid } = req.params;
+  try {
+    const { cid, pid } = req.params;
+
+    const cart = await cartManager.getById(parseInt(cid));
+    if (!cart) {
+      throw new Error(`No se encontro el carrito de id ${cid}`);
+    }
+
+    const product = await productManager.getById(parseInt(pid));
+    if (!product) {
+      throw new Error(`No se encontro el producto de id ${pid}`);
+    }
+
+    const productToAdd = {
+      product: product.id,
+      quantity: 1,
+    };
+    console.log(productToAdd);
+  } catch (error) {
+    console.log(`Error agregando producto al carrito: ${error.message}`);
+    res.status(404).json(notFound);
+  }
 });
 
 export default router;
