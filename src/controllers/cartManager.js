@@ -5,7 +5,7 @@ export default class CartManager {
     this.archivo = archivo;
   }
 
-  async addCart() {
+  async createCart() {
     try {
       /* busco si el archivo no existe o si existe, si tiene datos*/
       if (!this.#exists(this.archivo)) {
@@ -94,12 +94,6 @@ export default class CartManager {
     } catch (error) {
       console.log(`Error agregando producto al carrito: ${error.message}`);
     }
-  }
-
-  #idGenerator(cartsArray = []) {
-    const id =
-      cartsArray.length === 0 ? 1 : cartsArray[cartsArray.length - 1].id + 1;
-    return id;
   }
 
   #exists(archivo) {

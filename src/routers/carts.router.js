@@ -17,7 +17,7 @@ const notFound = { error: "Cart not found" };
     */
 
 router.post("/", async (req, res) => {
-  await cartManager.addCart();
+  await cartManager.createCart();
   res.status(201).json({ mensaje: "Carrito creado con exito" });
 });
 
