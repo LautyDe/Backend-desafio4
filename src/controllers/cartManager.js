@@ -96,6 +96,14 @@ export default class CartManager {
     }
   }
 
+  #idGenerator(productsArray = []) {
+    const id =
+      productsArray.length === 0
+        ? 1
+        : productsArray[productsArray.length - 1].id + 1;
+    return id;
+  }
+
   #exists(archivo) {
     /* verifico si existe el archivo */
     try {
